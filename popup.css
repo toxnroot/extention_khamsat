@@ -1,0 +1,128 @@
+:root {
+    --primary-color: #007bff;        /* اللون الأساسي */
+    --primary-hover: #0056b3;        /* لون hover */
+    --delete-color: #ff4d4f;         /* لون الحذف */
+    --delete-hover: #d9363e;         /* لون الحذف hover */
+    --background-color: #f4f4f4;     /* خلفية عامة */
+    --card-bg: #ffffff;              /* خلفية البطاقات */
+    --text-color: #333;
+    --border-radius: 15px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: "Tajawal", sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px 15px;
+    width: 350px;
+    box-sizing: border-box;
+}
+
+[alt="logo"] {
+    width: 10%;
+}
+
+
+#noRepliesMessage {
+    text-align: center;
+    font-size: 20px;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+#deleteAll {
+    background-color: var(--delete-color);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: var(--border-radius);
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    box-shadow: var(--shadow);
+}
+
+#deleteAll:hover {
+    background-color: var(--delete-hover);
+}
+
+
+.reply {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin-top: 20px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    direction: rtl;
+    transition: transform 0.2s ease;
+}
+
+.reply:hover {
+    transform: translateY(-3px);
+}
+
+
+.reply h2 {
+    margin: 0;
+    font-size: 18px;
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+.reply h3 {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.reply h4 {
+    margin: 0;
+    font-size: 14px;
+    color: #999;
+}
+
+
+.open-link {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+    box-shadow: var(--shadow);
+}
+
+.open-link:hover {
+    background-color: var(--primary-hover);
+}
+
+
+.delete {
+    background-color: var(--delete-color);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: var(--shadow);
+}
+
+.delete:hover {
+    background-color: var(--delete-hover);
+}
