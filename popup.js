@@ -82,40 +82,43 @@ document.addEventListener("DOMContentLoaded", () => {
   function loadReplies() {
     chrome.storage.local.get(["myReplies"], (result) => {
       const replies = result.myReplies || [];
-
-      repliesContainer.innerHTML = ""; // Clear container
-
+  
+      repliesContainer.innerHTML = ""; // تفريغ الحاوية
+  
       if (replies.length === 0) {
         const noRepliesMessage = document.createElement("p");
         noRepliesMessage.textContent = "لا توجد عروض محفوظة.";
         repliesContainer.appendChild(noRepliesMessage);
         return;
       }
-
+  
+      // ترتيب الردود بحيث الأحدث يكون في الأعلى
+      replies.sort((a, b) => new Date(b.savedAt) - new Date(a.savedAt));
+  
       replies.forEach((reply) => {
         const replyDiv = document.createElement("div");
         replyDiv.className = "reply";
-
+  
         const titleEl = document.createElement("h2");
         titleEl.textContent = reply.title;
         replyDiv.appendChild(titleEl);
-
+  
         const ownerEl = document.createElement("h3");
         ownerEl.textContent = `العميل: ${reply.owner}`;
         ownerEl.className = "owner";
         replyDiv.appendChild(ownerEl);
-
+  
         const timeEl = document.createElement("h4");
         timeEl.textContent = `منذ: ${timeAgoFromSaved(reply.savedAt)}`;
         replyDiv.appendChild(timeEl);
-
+  
         const linkEl = document.createElement("a");
         linkEl.href = reply.link;
         linkEl.className = "open-link";
         linkEl.target = "_blank";
         linkEl.textContent = "فتح العرض";
         replyDiv.appendChild(linkEl);
-
+  
         const deleteBtn = document.createElement("button");
         deleteBtn.textContent = "حذف";
         deleteBtn.dataset.link = reply.link;
@@ -124,11 +127,12 @@ document.addEventListener("DOMContentLoaded", () => {
           deleteReply(reply.link);
         });
         replyDiv.appendChild(deleteBtn);
-
+  
         repliesContainer.appendChild(replyDiv);
       });
     });
   }
+  
 
  
   function deleteReply(link) {
